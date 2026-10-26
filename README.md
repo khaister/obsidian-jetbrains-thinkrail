@@ -9,13 +9,19 @@ Unofficial and not affiliated with JetBrains.
 - Dark and light palettes from ThinkRail's bundled themes: zinc surfaces with a neon green accent in dark, white with a darker green in light.
 - Links in the info blue, callouts in the info, success, warning and danger colors, tags as a light accent tint.
 - Flat surfaces, hairline borders, and 4 / 6 / 8px corner radii.
+- Code styled like ThinkRail: borderless, 2px inline and 4px block corners.
 - Type scale: 14px body, 13px code, headings from 24px down to an uppercase 12px h6.
 - Editor tabs: square, with a divider between them, a hover-gray active tab with a 2px accent bar, and a close button that shows on hover.
 - Thin scrollbars that only appear on hover.
+- ThinkRail's fonts, Geist and JetBrains Mono, embedded.
 
 ## Fonts
 
-ThinkRail uses Geist and JetBrains Mono. A theme cannot bundle fonts, so install them locally for the exact look. Without them the theme falls back to the system sans and monospace fonts.
+Geist and JetBrains Mono (the Latin subset of the variable fonts, with italics) are embedded in `theme.css` as base64, so nothing needs installing and nothing is loaded over the network. Both are licensed under the SIL Open Font License 1.1, see `fonts/`.
+
+## Development
+
+Edit `src/theme.css`, then run `python3 scripts/build.py` to regenerate `theme.css` (the file Obsidian loads). Commit both.
 
 ## Install
 
