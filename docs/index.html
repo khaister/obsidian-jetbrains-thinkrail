@@ -42,7 +42,7 @@
       color: var(--text);
       font-family: var(--sans);
       font-size: 16px;
-      font-weight: 370;
+      font-weight: 400;
       line-height: 1.5;
     }
     .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
@@ -126,28 +126,9 @@
       </figure>
     </div>
 
-    <section>
-      <h2>What it copies from ThinkRail</h2>
-      <ul>
-        <li>Dark and light palettes from ThinkRail's bundled themes, with the same zinc surfaces and green accent.</li>
-        <li>Callouts styled like ThinkRail's markdown alerts: a 2px colored rule, a light tint, and Note, Tip, Important, Warning and Caution variants.</li>
-        <li>Type scale and spacing from its document view: 14px body text, 13px code, headings from 24px down, borderless code blocks, accent-colored underlined links.</li>
-        <li>Editor tabs with a 2px accent bar under the active tab.</li>
-        <li>ThinkRail's fonts, Geist for text and JetBrains Mono for code, used when they are installed on your system (see Fonts below).</li>
-      </ul>
-    </section>
-
     <section id="install">
       <h2>Install</h2>
-      <p>The theme isn't in Obsidian's community directory yet, so install it by hand:</p>
-      <ol>
-        <li>Download <code>manifest.json</code> and <code>theme.css</code> from the <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/releases/latest">latest release</a>.</li>
-        <li>Put both in a folder named <code>JetBrains ThinkRail</code> inside your vault's <code>.obsidian/themes</code> folder. Obsidian needs the folder name to match the <code>name</code> in the manifest.</li>
-        <li>In Obsidian, open Settings, then Appearance, and choose <strong>JetBrains ThinkRail</strong> under Themes.</li>
-        <li>Optional: install the fonts (see below), and set Appearance, Font size to <code>14</code>. Obsidian sets body font size itself (16px by default), which overrides a theme.</li>
-      </ol>
-      <pre><code>mkdir -p "&lt;vault&gt;/.obsidian/themes/JetBrains ThinkRail"
-cp manifest.json theme.css "&lt;vault&gt;/.obsidian/themes/JetBrains ThinkRail/"</code></pre>
+      <p>TBD</p>
     </section>
 
     <section id="fonts">
@@ -157,7 +138,7 @@ cp manifest.json theme.css "&lt;vault&gt;/.obsidian/themes/JetBrains ThinkRail/"
         <li><a href="https://fonts.google.com/specimen/Geist">Geist on Google Fonts</a></li>
         <li><a href="https://fonts.google.com/specimen/JetBrains+Mono">JetBrains Mono on Google Fonts</a></li>
       </ul>
-      <p>Recommended: download the whole family from each page and install the variable font along with its italic. ThinkRail's body text uses weight 370, and the theme also uses weights 400, 500 and 600. A variable font can render all of them, while a static Regular only gives 400. If the download includes variable font files, install those. Restart Obsidian after installing.</p>
+      <p>Recommended: download the whole family from each page and install it with its italics. The theme uses weights 400 (Regular), 500 (Medium) and 600 (SemiBold), so install at least those. Restart Obsidian after installing.</p>
       <p>On macOS you can install both with Homebrew instead:</p>
       <pre><code>brew install --cask font-jetbrains-mono
 brew install --cask font-geist</code></pre>
