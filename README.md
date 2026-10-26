@@ -33,4 +33,4 @@ Obsidian sets the body font size itself (16px by default), which overrides a the
 
 ## Install
 
-TBD
+Install it from the Obsidian community directory: [JetBrains ThinkRail](https://community.obsidian.md/themes/jetbrains-thinkrail).
