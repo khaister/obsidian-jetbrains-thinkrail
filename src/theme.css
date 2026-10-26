@@ -38,7 +38,14 @@ body {
   --bold-weight: 500;
   --line-height-normal: 1.45;
   --line-height-tight: 1.25;
-  --p-spacing: 0.75em;
+  --p-spacing: 8px;
+
+  /* Lists: 2px between items, 16px indent per level, markers in the text color (Markdown.tsx) */
+  --list-spacing: 2px;
+  --list-indent: 16px;
+  --list-indent-editing: 16px;
+  --list-indent-source: 16px;
+  --list-marker-color: var(--tr-text);
 
   /* Headings: 24 / 20 / 18 / 16 / 14 / 12 semibold, compact leading; h6 uppercase */
   --h1-size: 24px;
@@ -228,12 +235,12 @@ body {
   --bold-color: var(--tr-text);
   --italic-color: var(--tr-text);
 
-  /* Links: ThinkRail links use the info color (--text-link: var(--info)) */
-  --link-color: var(--tr-info);
-  --link-color-hover: var(--tr-info);
-  --link-external-color: var(--tr-info);
-  --link-external-color-hover: var(--tr-info);
-  --link-unresolved-color: var(--tr-info);
+  /* Links: ThinkRail's chat Markdown colors links with the accent and underlines them */
+  --link-color: var(--tr-accent);
+  --link-color-hover: var(--tr-accent);
+  --link-external-color: var(--tr-accent);
+  --link-external-color-hover: var(--tr-accent);
+  --link-unresolved-color: var(--tr-accent);
   --link-unresolved-opacity: 0.6;
 
   /* Code */
@@ -674,19 +681,33 @@ select:focus,
 .markdown-rendered blockquote {
   padding-left: 1em;
 }
+/* Lists: 8px above and below each list */
+.markdown-rendered ul,
+.markdown-rendered ol {
+  margin-block: 8px;
+}
+
+/* Tables: collapsed 1px muted border, 4px 8px cell padding, left-aligned semibold headers */
+.markdown-rendered table {
+  border-collapse: collapse;
+}
+.markdown-rendered td,
+.markdown-rendered th {
+  border: 1px solid var(--tr-border);
+  padding: 4px 8px;
+}
 .markdown-rendered th {
   font-weight: 600;
+  text-align: left;
 }
 .markdown-rendered mark,
 .cm-s-obsidian span.cm-highlight {
   border-radius: 2px;
   color: var(--tr-text);
 }
-.markdown-rendered a.internal-link,
-.cm-s-obsidian .cm-hmd-internal-link {
-  text-decoration: none;
-}
-.markdown-rendered a.internal-link:hover {
+.markdown-rendered a,
+.cm-s-obsidian .cm-hmd-internal-link,
+.cm-s-obsidian .cm-link {
   text-decoration: underline;
 }
 
@@ -696,67 +717,95 @@ input[type="checkbox"]:checked {
   border-color: var(--tr-accent-solid);
 }
 
-/* ---------- Callouts: feedback-*-subtle tints ---------- */
+/*
+ * ---------- Callouts: ThinkRail's markdown alerts ----------
+ * From resource-renderers/support/markdownAlerts.tsx: a 2px left border in the variant color,
+ * a 12% tint of it (10% for "important"), 4px corners on the right side only, 8px 12px padding,
+ * 12px outside margin, a 14px semibold title row with a 16px icon and 4px gap, 4px paragraph
+ * margins and body text in the normal text color. Variants: note = info, tip = success,
+ * important = accent, warning = warning, caution = error.
+ */
 .callout {
-  --callout-radius: var(--radius-m);
-  --callout-border-width: 1px;
-  --callout-border-opacity: 0.4;
-  --callout-padding: var(--size-4-3) var(--size-4-4);
+  --tr-callout: var(--tr-info);
+  --tr-callout-alpha: 12%;
+  --callout-padding: 0;
+  --callout-title-padding: 0;
+  --callout-content-padding: 0;
   --callout-title-size: 14px;
   --callout-title-weight: 600;
+  --callout-radius: 0 4px 4px 0;
+  margin-block: 12px;
+  padding: 8px 12px;
+  border: 0;
+  border-left: 2px solid var(--tr-callout);
+  border-radius: 0 4px 4px 0;
+  background-color: color-mix(in srgb, var(--tr-callout) var(--tr-callout-alpha), transparent);
+  color: var(--tr-text);
+  mix-blend-mode: normal;
   box-shadow: none;
 }
+.callout-title {
+  gap: 4px;
+  margin-bottom: 4px;
+  padding: 0;
+  line-height: 1.25;
+  color: var(--tr-callout);
+}
+.callout-icon,
+.callout-icon .svg-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--tr-callout);
+}
+.callout-content {
+  padding: 0;
+}
+.callout-content p {
+  margin-block: 4px;
+}
+.callout-content > :last-child {
+  margin-bottom: 0;
+}
+
 .callout[data-callout="note"],
 .callout[data-callout="info"],
-.callout[data-callout="todo"] {
-  --callout-color: 106, 200, 255;
+.callout[data-callout="todo"],
+.callout[data-callout="summary"],
+.callout[data-callout="abstract"],
+.callout[data-callout="tldr"] {
+  --tr-callout: var(--tr-info);
+  --callout-icon: lucide-info;
 }
 .callout[data-callout="tip"],
+.callout[data-callout="hint"],
 .callout[data-callout="success"],
 .callout[data-callout="check"],
 .callout[data-callout="done"] {
-  --callout-color: 65, 203, 102;
+  --tr-callout: var(--tr-success);
+  --callout-icon: lucide-lightbulb;
+}
+.callout[data-callout="important"] {
+  --tr-callout: var(--tr-accent);
+  --tr-callout-alpha: 10%;
+  --callout-icon: lucide-alert-circle;
 }
 .callout[data-callout="warning"],
-.callout[data-callout="caution"],
+.callout[data-callout="attention"],
 .callout[data-callout="question"],
 .callout[data-callout="help"],
 .callout[data-callout="faq"] {
-  --callout-color: 255, 213, 75;
+  --tr-callout: var(--tr-warning);
+  --callout-icon: lucide-alert-triangle;
 }
+.callout[data-callout="caution"],
 .callout[data-callout="danger"],
 .callout[data-callout="error"],
-.callout[data-callout="failure"],
 .callout[data-callout="fail"],
-.callout[data-callout="bug"],
-.callout[data-callout="missing"] {
-  --callout-color: 255, 75, 117;
-}
-.theme-light .callout[data-callout="note"],
-.theme-light .callout[data-callout="info"],
-.theme-light .callout[data-callout="todo"] {
-  --callout-color: 34, 101, 207;
-}
-.theme-light .callout[data-callout="tip"],
-.theme-light .callout[data-callout="success"],
-.theme-light .callout[data-callout="check"],
-.theme-light .callout[data-callout="done"] {
-  --callout-color: 22, 114, 48;
-}
-.theme-light .callout[data-callout="warning"],
-.theme-light .callout[data-callout="caution"],
-.theme-light .callout[data-callout="question"],
-.theme-light .callout[data-callout="help"],
-.theme-light .callout[data-callout="faq"] {
-  --callout-color: 148, 99, 0;
-}
-.theme-light .callout[data-callout="danger"],
-.theme-light .callout[data-callout="error"],
-.theme-light .callout[data-callout="failure"],
-.theme-light .callout[data-callout="fail"],
-.theme-light .callout[data-callout="bug"],
-.theme-light .callout[data-callout="missing"] {
-  --callout-color: 208, 37, 51;
+.callout[data-callout="failure"],
+.callout[data-callout="missing"],
+.callout[data-callout="bug"] {
+  --tr-callout: var(--tr-danger);
+  --callout-icon: lucide-siren;
 }
 
 /* ---------- Status bar, graph ---------- */
