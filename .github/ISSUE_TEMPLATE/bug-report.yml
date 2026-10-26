@@ -1,0 +1,110 @@
+name: Bug report
+description: Something looks wrong or broken with the theme.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The fields below are the minimum needed to reproduce the problem. A screenshot and a few lines of the note that shows it help the most.
+  - type: input
+    id: theme-version
+    attributes:
+      label: Theme version
+      description: The version in the theme's `manifest.json`, or the release you downloaded.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: obsidian-version
+    attributes:
+      label: Obsidian version
+      description: Shown in Settings > General.
+      placeholder: "1.x.x"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Windows
+        - Linux
+        - iOS or iPadOS
+        - Android
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: color-scheme
+    attributes:
+      label: Color scheme
+      description: Settings > Appearance > Base color scheme.
+      options:
+        - Dark
+        - Light
+        - Adapt to system
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where does it happen?
+      options:
+        - Reading view
+        - Live Preview
+        - Source mode
+        - Properties (frontmatter)
+        - Tabs or sidebars
+        - Command palette or modals
+        - Settings
+        - Somewhere else
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What you did, step by step, starting from a note or screen anyone can open.
+      placeholder: |
+        1. Open a note with ...
+        2. Switch to ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected-actual
+    attributes:
+      label: Expected and actual result
+      description: What you expected to see, and what you saw instead.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Paste or drag an image here. Include the part of the screen that looks wrong.
+  - type: textarea
+    id: markdown
+    attributes:
+      label: Note content
+      description: If it depends on the note, paste the smallest Markdown or frontmatter that shows the problem.
+      render: markdown
+  - type: textarea
+    id: settings
+    attributes:
+      label: Theme settings
+      description: Your Settings > Appearance > Font size, and any options you changed under Style Settings > JetBrains ThinkRail (for example Property lines).
+      placeholder: "Font size 14, Property lines: Zebra striping"
+  - type: dropdown
+    id: isolated
+    attributes:
+      label: Does it still happen with other plugins and CSS snippets turned off?
+      description: Turn off community plugins and CSS snippets, then check again. Other CSS often changes how a theme looks.
+      options:
+        - Yes, it still happens
+        - No, it goes away
+        - I have not tried
+    validations:
+      required: true
