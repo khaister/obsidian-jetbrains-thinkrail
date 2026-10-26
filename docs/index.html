@@ -6,19 +6,6 @@
   <title>JetBrains ThinkRail for Obsidian</title>
   <meta name="description" content="An Obsidian theme that follows the design of ThinkRail: flat zinc surfaces, a neon green accent, Geist and JetBrains Mono.">
   <style>
-    @font-face {
-      font-family: "Geist Variable";
-      font-weight: 100 900;
-      font-display: swap;
-      src: url("fonts/geist-latin-wght-normal.woff2") format("woff2");
-    }
-    @font-face {
-      font-family: "JetBrains Mono Variable";
-      font-weight: 100 900;
-      font-display: swap;
-      src: url("fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
-    }
-
     :root {
       color-scheme: light dark;
       --bg: #ffffff;
@@ -30,7 +17,7 @@
       --accent: #2a7314;
       --accent-solid: #8dff4f;
       --on-accent: #000000;
-      --sans: "Geist Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --sans: "Geist Variable", Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --mono: "JetBrains Mono Variable", "JetBrains Mono", "SF Mono", Menlo, monospace;
     }
     @media (prefers-color-scheme: dark) {
@@ -146,7 +133,7 @@
         <li>Callouts styled like ThinkRail's markdown alerts: a 2px colored rule, a light tint, and Note, Tip, Important, Warning and Caution variants.</li>
         <li>Type scale and spacing from its document view: 14px body text, 13px code, headings from 24px down, borderless code blocks, accent-colored underlined links.</li>
         <li>Editor tabs with a 2px accent bar under the active tab.</li>
-        <li>Geist and JetBrains Mono, embedded in the theme file, so nothing needs installing and nothing is loaded over the network.</li>
+        <li>ThinkRail's fonts, Geist for text and JetBrains Mono for code, used when they are installed on your system (see Fonts below).</li>
       </ul>
     </section>
 
@@ -157,10 +144,23 @@
         <li>Download <code>manifest.json</code> and <code>theme.css</code> from the <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/releases/latest">latest release</a>.</li>
         <li>Put both in a folder named <code>JetBrains ThinkRail</code> inside your vault's <code>.obsidian/themes</code> folder. Obsidian needs the folder name to match the <code>name</code> in the manifest.</li>
         <li>In Obsidian, open Settings, then Appearance, and choose <strong>JetBrains ThinkRail</strong> under Themes.</li>
-        <li>Optional: set Appearance, Font size to <code>14</code>. Obsidian sets body font size itself (16px by default), which overrides a theme.</li>
+        <li>Optional: install the fonts (see below), and set Appearance, Font size to <code>14</code>. Obsidian sets body font size itself (16px by default), which overrides a theme.</li>
       </ol>
       <pre><code>mkdir -p "&lt;vault&gt;/.obsidian/themes/JetBrains ThinkRail"
 cp manifest.json theme.css "&lt;vault&gt;/.obsidian/themes/JetBrains ThinkRail/"</code></pre>
+    </section>
+
+    <section id="fonts">
+      <h2>Fonts</h2>
+      <p>The theme uses ThinkRail's fonts but does not bundle them. Install them on your system and the theme picks them up. Without them it falls back to your system fonts.</p>
+      <ul>
+        <li><a href="https://fonts.google.com/specimen/Geist">Geist on Google Fonts</a></li>
+        <li><a href="https://fonts.google.com/specimen/JetBrains+Mono">JetBrains Mono on Google Fonts</a></li>
+      </ul>
+      <p>Recommended: download the whole family from each page and install the variable font along with its italic. ThinkRail's body text uses weight 370, and the theme also uses weights 400, 500 and 600. A variable font can render all of them, while a static Regular only gives 400. If the download includes variable font files, install those. Restart Obsidian after installing.</p>
+      <p>On macOS you can install both with Homebrew instead:</p>
+      <pre><code>brew install --cask font-jetbrains-mono
+brew install --cask font-geist</code></pre>
     </section>
 
     <section id="options">
@@ -189,7 +189,6 @@ cp manifest.json theme.css "&lt;vault&gt;/.obsidian/themes/JetBrains ThinkRail/"
     <div class="wrap">
       <p>Copyright 2026 Khai. Licensed under the <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/blob/main/LICENSE">Apache License 2.0</a>.</p>
       <p>Design, palette and styling derived from <a href="https://github.com/JetBrains/thinkrail">ThinkRail</a> by JetBrains s.r.o. (Apache License 2.0). See <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/blob/main/NOTICE">NOTICE</a>.</p>
-      <p>Fonts: Geist and JetBrains Mono, SIL Open Font License 1.1.</p>
     </div>
   </footer>
 </body>
