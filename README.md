@@ -43,7 +43,7 @@ Then choose **JetBrains ThinkRail** under Settings > Appearance > Themes.
 
 ## Status
 
-Version 0.0.1. Early work, tested by eye in Obsidian only. Open an issue or inspect with Cmd+Opt+I (Ctrl+Shift+I elsewhere) if a surface looks off.
+Version 1.0.0. Tested by eye in Obsidian only. Open an issue or inspect with Cmd+Opt+I (Ctrl+Shift+I elsewhere) if a surface looks off.
 
 ## License
 
