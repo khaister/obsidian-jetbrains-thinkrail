@@ -638,6 +638,26 @@ select:focus,
   box-shadow: 0 0 0 1px var(--tr-accent);
 }
 
+/* Properties (frontmatter): inputs inside them are bare text, so undo the form-field styling above */
+.metadata-container input,
+.metadata-container input:hover,
+.metadata-container input:focus,
+.metadata-container input:active,
+.metadata-container textarea,
+.metadata-container textarea:focus {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+}
+/* Name and value are top aligned; long values wrap onto new lines. The name is an <input>,
+   which cannot wrap, so a long name is cut off with an ellipsis. */
+.metadata-property-value {
+  align-items: flex-start;
+}
+.metadata-input-longtext {
+  overflow-wrap: anywhere;
+}
+
 /* Toggles */
 .checkbox-container {
   background-color: var(--tr-border-strong);
