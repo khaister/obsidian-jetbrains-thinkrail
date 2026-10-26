@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JetBrains ThinkRail for Obsidian</title>
+  <meta name="description" content="An Obsidian theme that follows the design of ThinkRail: flat zinc surfaces, a neon green accent, Geist and JetBrains Mono.">
+  <style>
+    @font-face {
+      font-family: "Geist Variable";
+      font-weight: 100 900;
+      font-display: swap;
+      src: url("fonts/geist-latin-wght-normal.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "JetBrains Mono Variable";
+      font-weight: 100 900;
+      font-display: swap;
+      src: url("fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+    }
+
+    :root {
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --surface: #f4f4f5;
+      --border: #e4e4e7;
+      --border-strong: #d4d4d8;
+      --text: #27272a;
+      --muted: #52525b;
+      --accent: #2a7314;
+      --accent-solid: #8dff4f;
+      --on-accent: #000000;
+      --sans: "Geist Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "JetBrains Mono Variable", "JetBrains Mono", "SF Mono", Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #09090b;
+        --surface: #18181b;
+        --border: #27272a;
+        --border-strong: #3f3f46;
+        --text: #f4f4f5;
+        --muted: #babac1;
+        --accent: #8dff4f;
+        --accent-solid: #8dff4f;
+        --on-accent: #0a0a0a;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 370;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+    header.top { border-bottom: 1px solid var(--border); }
+    header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 48px; }
+    .brand { font-weight: 600; color: var(--text); text-decoration: none; }
+    nav a { margin-left: 16px; color: var(--muted); text-decoration: none; font-size: 14px; }
+    nav a:hover { color: var(--text); }
+
+    .hero { padding: 64px 0 32px; }
+    h1 { font-size: 40px; line-height: 1.15; font-weight: 600; margin: 0 0 12px; letter-spacing: -0.01em; }
+    .lead { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0 0 24px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn {
+      display: inline-block; padding: 8px 14px; border-radius: 4px; font-size: 14px; font-weight: 500;
+      text-decoration: none; border: 1px solid var(--border-strong); color: var(--text); background: var(--surface);
+    }
+    .btn:hover { border-color: var(--muted); }
+    .btn.primary { background: var(--accent-solid); border-color: transparent; color: var(--on-accent); }
+    .btn.primary:hover { filter: brightness(0.92); }
+    .note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+    .shot { margin: 32px 0 8px; }
+    .shot img {
+      display: block; width: 100%; height: auto;
+      border: 1px solid var(--border-strong); border-radius: 8px;
+    }
+    .shot figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+    section { padding: 40px 0 8px; }
+    h2 { font-size: 24px; line-height: 1.25; font-weight: 600; margin: 0 0 12px; padding-bottom: 4px; border-bottom: 1px solid var(--border-strong); }
+    p { margin: 12px 0; }
+    ul { margin: 12px 0; padding-left: 1.6em; }
+    li { margin: 4px 0; }
+    a { color: var(--accent); text-underline-offset: 2px; }
+    code {
+      font-family: var(--mono); font-size: 13px; background: var(--surface);
+      padding: 2px 4px; border-radius: 2px;
+    }
+    pre {
+      font-family: var(--mono); font-size: 13px; line-height: 1.4; background: var(--surface);
+      padding: 8px 12px; border-radius: 4px; overflow-x: auto; margin: 12px 0;
+    }
+    pre code { background: none; padding: 0; }
+    ol { padding-left: 1.6em; }
+
+    footer { margin-top: 56px; border-top: 1px solid var(--border); padding: 24px 0 48px; font-size: 13px; color: var(--muted); }
+    footer p { margin: 4px 0; }
+
+    @media (max-width: 560px) {
+      h1 { font-size: 30px; }
+      .hero { padding-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#">JetBrains ThinkRail</a>
+      <nav>
+        <a href="#install">Install</a>
+        <a href="#options">Options</a>
+        <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <h1>ThinkRail, for Obsidian</h1>
+      <p class="lead">A flat, quiet Obsidian theme that follows the design of ThinkRail: zinc surfaces, a neon green accent, Geist for text and JetBrains Mono for code. Dark and light.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/khaister/obsidian-jetbrains-thinkrail/releases/latest">Download latest release</a>
+        <a class="btn" href="https://github.com/khaister/obsidian-jetbrains-thinkrail">View on GitHub</a>
+      </div>
+      <p class="note">Unofficial. Not affiliated with or endorsed by JetBrains.</p>
+
+      <figure class="shot">
+        <picture>
+          <source srcset="img/dark.png" media="(prefers-color-scheme: dark)">
+          <img src="img/light.png" alt="The theme in Obsidian, showing a note with properties, callouts and code">
+        </picture>
+        <figcaption>The demo note in Obsidian, in your system's color scheme. Both schemes are below.</figcaption>
+      </figure>
+    </div>
+
+    <section>
+      <h2>What it copies from ThinkRail</h2>
+      <ul>
+        <li>Dark and light palettes from ThinkRail's bundled themes, with the same zinc surfaces and green accent.</li>
+        <li>Callouts styled like ThinkRail's markdown alerts: a 2px colored rule, a light tint, and Note, Tip, Important, Warning and Caution variants.</li>
+        <li>Type scale and spacing from its document view: 14px body text, 13px code, headings from 24px down, borderless code blocks, accent-colored underlined links.</li>
+        <li>Editor tabs with a 2px accent bar under the active tab.</li>
+        <li>Geist and JetBrains Mono, embedded in the theme file, so nothing needs installing and nothing is loaded over the network.</li>
+      </ul>
+    </section>
+
+    <section id="install">
+      <h2>Install</h2>
+      <p>The theme isn't in Obsidian's community directory yet, so install it by hand:</p>
+      <ol>
+        <li>Download <code>manifest.json</code> and <code>theme.css</code> from the <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/releases/latest">latest release</a>.</li>
+        <li>Put both in a folder named <code>JetBrains ThinkRail</code> inside your vault's <code>.obsidian/themes</code> folder. Obsidian needs the folder name to match the <code>name</code> in the manifest.</li>
+        <li>In Obsidian, open Settings, then Appearance, and choose <strong>JetBrains ThinkRail</strong> under Themes.</li>
+        <li>Optional: set Appearance, Font size to <code>14</code>. Obsidian sets body font size itself (16px by default), which overrides a theme.</li>
+      </ol>
+      <pre><code>mkdir -p "&lt;vault&gt;/.obsidian/themes/JetBrains ThinkRail"
+cp manifest.json theme.css "&lt;vault&gt;/.obsidian/themes/JetBrains ThinkRail/"</code></pre>
+    </section>
+
+    <section id="options">
+      <h2>Options</h2>
+      <p>Install the <a href="https://github.com/mgmeyers/obsidian-style-settings">Style Settings</a> plugin to configure the theme under Settings, Style Settings, JetBrains ThinkRail.</p>
+      <ul>
+        <li><strong>Property lines</strong> is a dropdown for the Properties block at the top of a note: hide lines (default), a solid or dotted line from each name to its value, or zebra striping across every other row.</li>
+        <li><strong>Property line gap</strong> sets the space on each side of the line, from 0 to 16px.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Both color schemes</h2>
+      <figure class="shot">
+        <img src="img/dark.png" alt="Dark scheme">
+        <figcaption>Dark</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/light.png" alt="Light scheme">
+        <figcaption>Light</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Copyright 2026 Khai. Licensed under the <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/blob/main/LICENSE">Apache License 2.0</a>.</p>
+      <p>Design, palette and styling derived from <a href="https://github.com/JetBrains/thinkrail">ThinkRail</a> by JetBrains s.r.o. (Apache License 2.0). See <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/blob/main/NOTICE">NOTICE</a>.</p>
+      <p>Fonts: Geist and JetBrains Mono, SIL Open Font License 1.1.</p>
+    </div>
+  </footer>
+</body>
+</html>
