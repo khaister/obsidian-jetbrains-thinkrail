@@ -68,11 +68,10 @@ body {
   --font-ui-small: 12px;
   --font-ui-medium: 13px;
   --font-ui-large: 16px;
-  --font-light: 370;
   --font-normal: 400;
   --font-medium: 500;
   --font-semibold: 600;
-  --font-weight: 370;
+  --font-weight: 400;
   --bold-weight: 500;
   --line-height-normal: 1.45;
   --line-height-tight: 1.25;
@@ -116,9 +115,9 @@ body {
   --input-radius: 4px;
   --input-height: 28px;
   --nav-item-size: 13px;
-  --nav-item-weight: 370;
+  --nav-item-weight: 400;
   --tab-font-size: 14px;
-  --tab-font-weight: 370;
+  --tab-font-weight: 400;
   --tab-radius: 0;
   --tab-radius-active: 0;
   --file-line-width: 760px;
@@ -409,7 +408,7 @@ body {
 
 body {
   -webkit-font-smoothing: antialiased;
-  font-weight: 370;
+  font-weight: 400;
 }
 
 /* Sidebar: its own recessed tone, separated by a hairline, no gradients */
@@ -495,7 +494,7 @@ body {
 }
 .mod-root .workspace-tab-header-inner-title {
   font-size: 14px;
-  font-weight: 370;
+  font-weight: 400;
 }
 .mod-root .workspace-tab-header-inner-close-button {
   padding: 2px;
