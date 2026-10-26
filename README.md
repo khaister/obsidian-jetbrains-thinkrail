@@ -4,6 +4,8 @@ An Obsidian theme that follows the design of [ThinkRail](https://github.com/JetB
 
 Unofficial and not affiliated with JetBrains.
 
+Site: https://khaister.github.io/obsidian-jetbrains-thinkrail/
+
 ![JetBrains ThinkRail, dark](docs/screenshot-dark.png)
 
 ![JetBrains ThinkRail, light](docs/screenshot-light.png)
