@@ -19,6 +19,10 @@ Unofficial and not affiliated with JetBrains.
 
 Geist and JetBrains Mono (the Latin subset of the variable fonts, with italics) are embedded in `theme.css` as base64, so nothing needs installing and nothing is loaded over the network. Both are licensed under the SIL Open Font License 1.1, see `fonts/`.
 
+## Font size
+
+Obsidian sets the body font size itself (16px by default), which overrides a theme. To match ThinkRail's 14px body text, set Settings > Appearance > Font size to 14.
+
 ## Development
 
 Edit `src/theme.css`, then run `python3 scripts/build.py` to regenerate `theme.css` (the file Obsidian loads). Commit both.
