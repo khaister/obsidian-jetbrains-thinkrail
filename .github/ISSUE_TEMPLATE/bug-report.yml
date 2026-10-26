@@ -85,6 +85,8 @@ body:
     attributes:
       label: Screenshot
       description: Paste or drag an image here. Include the part of the screen that looks wrong.
+    validations:
+      required: true
   - type: textarea
     id: markdown
     attributes:
