@@ -19,10 +19,6 @@ Unofficial and not affiliated with JetBrains.
 
 Geist and JetBrains Mono (the Latin subset of the variable fonts, with italics) are embedded in `theme.css` as base64, so nothing needs installing and nothing is loaded over the network. Both are licensed under the SIL Open Font License 1.1, see `fonts/`.
 
-## Demo vault
-
-`demo-vault/` is a vault with only this theme: no community plugins, and `.obsidian/themes/` links back to this repo. The first time, open it from Obsidian's vault switcher with **Open folder as vault** and pick `demo-vault`. After that Obsidian knows the vault, and `open "obsidian://open?vault=demo-vault"` opens it.
-
 ## Development
 
 Edit `src/theme.css`, then run `python3 scripts/build.py` to regenerate `theme.css` (the file Obsidian loads). Commit both.
