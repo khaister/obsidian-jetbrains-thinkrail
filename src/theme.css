@@ -10,6 +10,42 @@
  * both as base64 @font-face rules in the generated theme.css, so no install is needed.
  */
 
+/* @settings
+name: JetBrains ThinkRail
+id: jetbrains-thinkrail
+settings:
+    -
+        id: tr-properties-lines
+        title: Property lines
+        description: A faint line from each property name to its value, or a background on every other row.
+        type: class-select
+        allowEmpty: false
+        default: tr-properties-no-lines
+        options:
+            -
+                label: Hide lines
+                value: tr-properties-no-lines
+            -
+                label: Solid lines
+                value: tr-properties-lines
+            -
+                label: Dotted lines
+                value: tr-properties-dotted
+            -
+                label: Zebra striping
+                value: tr-properties-zebra
+    -
+        id: tr-leader-gap
+        title: Property line gap
+        description: Space between the line and the name, and between the line and the value.
+        type: variable-number-slider
+        default: 2
+        min: 0
+        max: 16
+        step: 1
+        format: px
+*/
+
 /* ---------- Tokens shared by both schemes ---------- */
 body {
   /* Shape: 2 / 4 / 6 / 8, nothing above 8 (tokens.css) */
@@ -122,6 +158,7 @@ body {
   --tr-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
   --tr-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.4);
   --tr-overlay: rgba(0, 0, 0, 0.5);
+  --tr-sunken: rgba(0, 0, 0, 0.12);
 
   /* syntax (dark.theme.json) */
   --tr-syn-fg: #e6edf3;
@@ -164,6 +201,7 @@ body {
   --tr-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
   --tr-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.14);
   --tr-overlay: rgba(0, 0, 0, 0.5);
+  --tr-sunken: rgba(0, 0, 0, 0.05);
 
   --tr-syn-fg: #24292f;
   --tr-syn-comment: #6e7781;
@@ -612,6 +650,49 @@ select:focus,
   overflow-wrap: anywhere;
 }
 
+/*
+ * Experiment: a faint leader line from the end of the name to the start of the value, so it is
+ * easy to see which name a value belongs to. The name input shrinks to its text (field-sizing),
+ * and a ::after fills the rest of the name column. It is baseline aligned, so the line sits at
+ * the bottom of the text. --tr-leader-gap (default 2px, set by the Style Settings slider) is the
+ * space on each side of the line; the name input's own right padding is removed so both sides match.
+ * Off by default, which keeps Obsidian's layout. The Style Settings option "Property lines" adds
+ * .tr-properties-lines (solid) or .tr-properties-dotted to body to turn it on; without the plugin
+ * no class is set and the lines stay off.
+ */
+body:is(.tr-properties-lines, .tr-properties-dotted) input.metadata-property-key-input {
+  field-sizing: content;
+  align-self: baseline;
+  flex: 0 1 auto;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  padding-inline-end: 0;
+}
+body:is(.tr-properties-lines, .tr-properties-dotted) .metadata-property-key::after {
+  content: "";
+  flex: 1 1 0;
+  min-width: 0;
+  align-self: baseline;
+  height: 0;
+  margin-inline: var(--tr-leader-gap, 2px);
+  border-bottom: 1px solid var(--tr-border-strong);
+}
+body.tr-properties-dotted .metadata-property-key::after {
+  border-bottom-style: dotted;
+}
+body:is(.tr-properties-lines, .tr-properties-dotted) .metadata-property-value .metadata-input-longtext {
+  padding-inline-start: var(--tr-leader-gap, 2px);
+}
+
+/* Zebra striping: every other property row gets a background across the whole row, as in
+   ThinkRail's markdown tables (even rows use its "sunken" tint). No line, no gaps between rows. */
+body.tr-properties-zebra .metadata-properties {
+  gap: 0;
+}
+body.tr-properties-zebra .metadata-property:nth-child(even) {
+  background-color: var(--tr-sunken);
+}
 /* Toggles */
 .checkbox-container {
   background-color: var(--tr-border-strong);
