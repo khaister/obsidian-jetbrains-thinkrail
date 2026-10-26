@@ -169,9 +169,6 @@ body {
   --tab-radius-active: 0;
   --file-line-width: 760px;
   --scrollbar-bg: transparent;
-
-  --anim-duration-fast: 120ms;
-  --anim-duration-moderate: 200ms;
 }
 
 /* ---------- Dark (ThinkRail "Dark") ---------- */
@@ -408,6 +405,9 @@ body {
   --tab-outline-color: var(--tr-border-strong);
   --tab-outline-width: 1px;
   --tab-curve: 0;
+  /* The tab itself carries the hover and active fill, so the inner element stays transparent */
+  --tab-inner-background-hover: transparent;
+  --tab-inner-background-active: transparent;
 
   /* Window chrome */
   --titlebar-background: var(--tr-background);
@@ -538,7 +538,6 @@ body {
   gap: 4px;
   padding: 0 4px 0 8px;
   border-radius: 0;
-  background: transparent !important;
 }
 .mod-root .workspace-tab-header-inner-title {
   font-size: 14px;
@@ -548,7 +547,6 @@ body {
   padding: 2px;
   border-radius: var(--radius-s);
   opacity: 0;
-  transition: opacity var(--anim-duration-fast) ease;
 }
 .mod-root .workspace-tab-header:hover .workspace-tab-header-inner-close-button,
 .mod-root .workspace-tab-header-inner-close-button:focus-visible {
@@ -576,7 +574,6 @@ body {
   border-radius: var(--radius-s);
   padding-top: 2px;
   padding-bottom: 2px;
-  transition: background-color var(--anim-duration-fast) ease;
 }
 .mod-root .nav-file-title.is-active,
 .mod-root .nav-file-title.is-active:hover {
@@ -608,7 +605,6 @@ body {
   background-color: transparent;
   border: 0;
   border-radius: var(--radius-s);
-  transition: background-color var(--anim-duration-fast) ease;
 }
 :hover::-webkit-scrollbar-thumb {
   background-color: var(--tr-border-strong);
@@ -619,13 +615,6 @@ body {
 }
 
 /* ---------- Buttons and inputs ---------- */
-button,
-.clickable-icon,
-.setting-item-control button {
-  transition:
-    background-color var(--anim-duration-fast) ease,
-    border-color var(--anim-duration-fast) ease;
-}
 button:not(.clickable-icon):not(.mod-cta):not(.mod-warning) {
   background-color: var(--tr-input);
   border: 1px solid var(--tr-border);
@@ -1002,10 +991,4 @@ input[type="checkbox"]:checked {
 }
 .graph-view.color-text {
   color: var(--tr-muted);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-  }
 }
