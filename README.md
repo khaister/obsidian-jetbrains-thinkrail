@@ -33,4 +33,4 @@ Version 0.0.1. Early work, tested by eye in Obsidian only. Open an issue or insp
 
 ## License
 
-[Apache License 2.0](LICENSE). See [NOTICE](NOTICE) for attribution to ThinkRail.
+Copyright 2026 Khai. [Apache License 2.0](LICENSE). See [NOTICE](NOTICE) for attribution to ThinkRail.
