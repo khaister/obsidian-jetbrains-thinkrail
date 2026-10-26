@@ -2,24 +2,13 @@
 
 An Obsidian theme that follows the design of [ThinkRail](https://github.com/JetBrains/thinkrail), the JetBrains IDE-style app.
 
-Unofficial and not affiliated with JetBrains.
 
-Site: https://khaister.github.io/obsidian-jetbrains-thinkrail/
+> [!NOTE]
+> Unofficial and not affiliated with JetBrains.
 
 ![JetBrains ThinkRail, dark](docs/screenshot-dark.png)
 
 ![JetBrains ThinkRail, light](docs/screenshot-light.png)
-
-## What it copies
-
-- Dark and light palettes from ThinkRail's bundled themes: zinc surfaces with a neon green accent in dark, white with a darker green in light.
-- Links in the info blue, callouts in the info, success, warning and danger colors, tags as a light accent tint.
-- Flat surfaces, hairline borders, and 4 / 6 / 8px corner radii.
-- Code styled like ThinkRail: borderless, 2px inline and 4px block corners.
-- Type scale: 14px body, 13px code, headings from 24px down to an uppercase 12px h6.
-- Editor tabs: square, with a divider between them, a hover-gray active tab with a 2px accent bar, and a close button that shows on hover.
-- Thin scrollbars that only appear on hover.
-- ThinkRail's fonts, Geist and JetBrains Mono, when installed.
 
 ## Fonts
 
@@ -37,7 +26,7 @@ brew install --cask font-jetbrains-mono
 brew install --cask font-geist
 ```
 
-## Font size
+### Font size
 
 Obsidian sets the body font size itself (16px by default), which overrides a theme. To match ThinkRail's 14px body text, set Settings > Appearance > Font size to 14.
 
