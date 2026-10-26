@@ -17,7 +17,7 @@ The theme uses ThinkRail's fonts, Geist for text and JetBrains Mono for code. It
 - [Geist on Google Fonts](https://fonts.google.com/specimen/Geist)
 - [JetBrains Mono on Google Fonts](https://fonts.google.com/specimen/JetBrains+Mono)
 
-> [!INFO]
+> [!NOTE]
 > Recommended: download the whole family from each page and install the variable font along with its italic. ThinkRail's body text uses weight 370, and the theme also uses weights 400, 500 and 600. A variable font can render all of them, while a static Regular only gives 400. If the download includes variable font files, install those. Restart Obsidian after installing.
 
 On macOS you can install both with Homebrew instead:
