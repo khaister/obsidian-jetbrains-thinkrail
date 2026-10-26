@@ -391,7 +391,7 @@ body {
   --modal-background: var(--tr-elevated);
   --modal-border-color: var(--tr-border-strong);
   --modal-radius: 8px;
-  --prompt-border-color: var(--tr-border-strong);
+  --prompt-border-width: 0;
   --shadow-s: var(--tr-shadow-sm);
   --shadow-l: var(--tr-shadow-lg);
 
@@ -742,6 +742,23 @@ body.tr-properties-zebra .metadata-property:nth-child(even) {
 .prompt {
   border-radius: var(--radius-l);
   box-shadow: var(--tr-shadow-lg);
+}
+/* Command palette footer (the key hints): a hairline above it */
+.prompt-instructions {
+  border-top: 1px solid var(--tr-border);
+}
+
+/* Command palette input: keeps the form-field fill, but with square corners, no border and no
+   focus ring. Obsidian's own hairline stays under the input. */
+.prompt input.prompt-input,
+.prompt input.prompt-input:hover,
+.prompt input.prompt-input:focus,
+.prompt input.prompt-input:focus-visible {
+  background-color: var(--tr-input);
+  border: 0;
+  border-bottom: var(--border-width) solid var(--background-secondary);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* ---------- Reading and editing ---------- */
