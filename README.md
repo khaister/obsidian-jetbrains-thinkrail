@@ -1,0 +1,36 @@
+# JetBrains ThinkRail
+
+An Obsidian theme that follows the design of [ThinkRail](https://github.com/JetBrains/thinkrail), the JetBrains IDE-style app.
+
+Unofficial and not affiliated with JetBrains.
+
+## What it copies
+
+- Dark and light palettes from ThinkRail's bundled themes: zinc surfaces with a neon green accent in dark, white with a darker green in light.
+- Links in the info blue, callouts in the info, success, warning and danger colors, tags as a light accent tint.
+- Flat surfaces, hairline borders, and 4 / 6 / 8px corner radii.
+- Type scale: 14px body, 13px code, headings from 24px down to an uppercase 12px h6.
+- Editor tabs: square, with a divider between them, a hover-gray active tab with a 2px accent bar, and a close button that shows on hover.
+- Thin scrollbars that only appear on hover.
+
+## Fonts
+
+ThinkRail uses Geist and JetBrains Mono. A theme cannot bundle fonts, so install them locally for the exact look. Without them the theme falls back to the system sans and monospace fonts.
+
+## Install
+
+Obsidian needs the folder name to match the `name` in `manifest.json`.
+
+```sh
+ln -s /path/to/obsidian-jetbrains-thinkrail "<vault>/.obsidian/themes/JetBrains ThinkRail"
+```
+
+Then choose **JetBrains ThinkRail** under Settings > Appearance > Themes.
+
+## Status
+
+Version 0.0.1. Early work, tested by eye in Obsidian only. Open an issue or inspect with Cmd+Opt+I (Ctrl+Shift+I elsewhere) if a surface looks off.
+
+## License
+
+[Apache License 2.0](LICENSE). See [NOTICE](NOTICE) for attribution to ThinkRail.

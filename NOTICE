@@ -1,0 +1,19 @@
+JetBrains ThinkRail (Obsidian theme)
+
+This theme is derived from the design of ThinkRail by JetBrains s.r.o.
+https://github.com/JetBrains/thinkrail
+Copyright 2026 JetBrains s.r.o.
+Licensed under the Apache License, Version 2.0.
+
+Color palette values, type scale, radii and tab styling were taken from these files
+in the ThinkRail repository:
+  apps/web/src/themes/bundled/dark.theme.json
+  apps/web/src/themes/bundled/light.theme.json
+  apps/web/src/styles/tokens.css
+  apps/web/src/styles/generated/colors.css
+  apps/web/src/styles/generated/typography.css
+  apps/web/src/shell/layout/workbenchTabs.tsx
+
+Changes: the values were translated into Obsidian CSS variables and selectors in theme.css.
+
+This project is an unofficial community theme. It is not affiliated with or endorsed by JetBrains.
