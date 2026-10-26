@@ -72,7 +72,9 @@ body {
   --heading-spacing: 1.5em;
 
   /* Code */
-  --code-size: 13px;
+  /* ThinkRail pairs 13px code with 14px text. Keeping that 13:14 ratio in em makes code follow
+     the Font size setting and the size of whatever it sits in (headings, callouts). */
+  --code-size: calc(13em / 14);
 
   /* Components */
   --input-radius: 4px;
