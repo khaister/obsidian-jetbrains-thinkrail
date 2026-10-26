@@ -4,6 +4,10 @@ An Obsidian theme that follows the design of [ThinkRail](https://github.com/JetB
 
 Unofficial and not affiliated with JetBrains.
 
+![JetBrains ThinkRail, dark](docs/screenshot-dark.png)
+
+![JetBrains ThinkRail, light](docs/screenshot-light.png)
+
 ## What it copies
 
 - Dark and light palettes from ThinkRail's bundled themes: zinc surfaces with a neon green accent in dark, white with a darker green in light.
