@@ -6,8 +6,8 @@
  * styles/generated/typography.css). Names in comments (background, header, sidebar...)
  * are ThinkRail's own palette roles.
  *
- * Fonts: ThinkRail self-hosts Geist and JetBrains Mono. The build (scripts/build.py) embeds
- * both as base64 @font-face rules in the generated theme.css, so no install is needed.
+ * Fonts: ThinkRail uses Geist and JetBrains Mono. This theme does not bundle them; it uses
+ * them when they are installed on the system and falls back to system fonts otherwise.
  */
 
 /* @settings
