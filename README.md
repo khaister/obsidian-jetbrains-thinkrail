@@ -2,13 +2,22 @@
 
 An Obsidian theme that follows the design of [ThinkRail](https://github.com/JetBrains/thinkrail), the JetBrains IDE-style app.
 
-
-> [!NOTE]
-> Unofficial and not affiliated with JetBrains.
+![JetBrains ThinkRail, light](docs/screenshot-light.png)
 
 ![JetBrains ThinkRail, dark](docs/screenshot-dark.png)
 
-![JetBrains ThinkRail, light](docs/screenshot-light.png)
+## Install
+
+Install it from the Obsidian community directory: [JetBrains ThinkRail](https://community.obsidian.md/themes/jetbrains-thinkrail).
+
+## Style Settings
+
+Install the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin to configure the theme under Settings, Style Settings, JetBrains ThinkRail.
+
+| Option | Type | Description |
+| --- | --- | --- |
+| Property lines | Dropdown | How the Properties block at the top of a note shows which value belongs to which name: hide lines (default), a solid or dotted line from each name to its value, or zebra striping across every other row. |
+| Property line gap | Slider, 0 to 16px (default 2px) | Space on each side of the line. Applies to the solid and dotted options. |
 
 ## Fonts
 
@@ -27,10 +36,6 @@ brew install --cask font-jetbrains-mono
 brew install --cask font-geist
 ```
 
-### Font size
+---
 
-Obsidian sets the body font size itself (16px by default), which overrides a theme. To match ThinkRail's 14px body text, set Settings > Appearance > Font size to 14.
-
-## Install
-
-Install it from the Obsidian community directory: [JetBrains ThinkRail](https://community.obsidian.md/themes/jetbrains-thinkrail).
+† Unofficial and not affiliated with JetBrains.
