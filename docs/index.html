@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JetBrains ThinkRail for Obsidian</title>
-  <meta name="description" content="An Obsidian theme that follows the design of ThinkRail: flat zinc surfaces, a neon green accent, Geist and JetBrains Mono.">
+  <meta name="description" content="An Obsidian theme that follows the design of JetBrains ThinkRail: flat zinc surfaces, a neon green accent, Geist and JetBrains Mono.">
   <style>
     :root {
       color-scheme: light dark;
@@ -17,6 +17,7 @@
       --accent: #2a7314;
       --accent-solid: #8dff4f;
       --on-accent: #000000;
+      --img-shadow: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.12));
       --sans: "Geist Variable", Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --mono: "JetBrains Mono Variable", "JetBrains Mono", "SF Mono", Menlo, monospace;
     }
@@ -31,6 +32,7 @@
         --accent: #8dff4f;
         --accent-solid: #8dff4f;
         --on-accent: #0a0a0a;
+        --img-shadow: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.6));
       }
     }
 
@@ -66,8 +68,32 @@
     .note { font-size: 13px; color: var(--muted); margin-top: 12px; }
 
     .shot { margin: 32px 0 8px; }
-    .shot img { display: block; width: 100%; height: auto; }
     .shot figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+    /* Light and dark screenshots stacked; the light one is clipped at the slider position. */
+    .compare {
+      --pos: 50%;
+      position: relative; overflow: hidden; aspect-ratio: 2000 / 1087;
+      user-select: none; -webkit-user-select: none;
+      filter: var(--img-shadow); /* follows the screenshot's rounded corners */
+    }
+    .compare img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+    .compare .top { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .compare .bar {
+      position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px;
+      background: var(--accent-solid); pointer-events: none;
+    }
+    .compare .knob {
+      position: absolute; top: 50%; left: var(--pos); width: 36px; height: 36px; margin: -18px 0 0 -18px;
+      border-radius: 50%; background: var(--accent-solid); color: var(--on-accent);
+      display: grid; place-items: center; font-size: 14px; font-weight: 600; pointer-events: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .compare input[type="range"] {
+      position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; padding: 0;
+      opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none; background: transparent;
+    }
+    .compare input[type="range"]:focus-visible ~ .knob { outline: 2px solid var(--text); outline-offset: 2px; }
 
     section { padding: 40px 0 8px; }
     h2 { font-size: 24px; line-height: 1.25; font-weight: 600; margin: 0 0 12px; padding-bottom: 4px; border-bottom: 1px solid var(--border-strong); }
@@ -86,6 +112,12 @@
     pre code { background: none; padding: 0; }
     ol { padding-left: 1.6em; }
 
+    .table-wrap { overflow-x: auto; margin: 12px 0; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    th, td { border: 1px solid var(--border-strong); padding: 4px 8px; text-align: left; vertical-align: top; }
+    th { font-weight: 600; background: var(--surface); }
+    td:first-child { font-weight: 500; white-space: nowrap; }
+
     footer { margin-top: 56px; border-top: 1px solid var(--border); padding: 24px 0 48px; font-size: 13px; color: var(--muted); }
     footer p { margin: 4px 0; }
 
@@ -100,8 +132,6 @@
     <div class="wrap">
       <a class="brand" href="#">JetBrains ThinkRail</a>
       <nav>
-        <a href="#install">Install</a>
-        <a href="#options">Options</a>
         <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail">GitHub</a>
       </nav>
     </div>
@@ -110,25 +140,45 @@
   <main class="wrap">
     <div class="hero">
       <h1>ThinkRail, for Obsidian</h1>
-      <p class="lead">A flat, quiet Obsidian theme that follows the design of ThinkRail: zinc surfaces, a neon green accent, Geist for text and JetBrains Mono for code. Dark and light.</p>
+      <p class="lead">A flat, quiet Obsidian theme that follows the design of <a href="https://thinkrail.ai/">JetBrains ThinkRail</a>: zinc surfaces, a neon green accent, Geist for text and JetBrains Mono for code. Dark and light.</p>
       <div class="actions">
         <a class="btn primary" href="https://community.obsidian.md/themes/jetbrains-thinkrail">Install from Obsidian</a>
         <a class="btn" href="https://github.com/khaister/obsidian-jetbrains-thinkrail">View on GitHub</a>
       </div>
-      <p class="note">Unofficial. Not affiliated with or endorsed by JetBrains.</p>
 
       <figure class="shot">
-        <picture>
-          <source srcset="img/dark.png" media="(prefers-color-scheme: dark)">
-          <img src="img/light.png" alt="The theme in Obsidian, showing a note with properties, callouts and code">
-        </picture>
-        <figcaption>The demo note in Obsidian, in your system's color scheme. Both schemes are below.</figcaption>
+        <div class="compare" id="compare">
+          <img src="img/dark.png" alt="The theme in dark mode, showing a note with properties, callouts and code">
+          <img class="top" src="img/light.png" alt="The same note in light mode">
+          <div class="bar"></div>
+          <input type="range" min="0" max="100" value="50" step="0.1" aria-label="Compare light and dark: drag to reveal more of one theme">
+          <div class="knob" aria-hidden="true">&#8596;</div>
+        </div>
       </figure>
     </div>
 
-    <section id="install">
-      <h2>Install</h2>
-      <p>Install it from the Obsidian community directory: <a href="https://community.obsidian.md/themes/jetbrains-thinkrail">JetBrains ThinkRail</a>.</p>
+    <section id="style-settings">
+      <h2>Style Settings</h2>
+      <p>Install the <a href="https://github.com/mgmeyers/obsidian-style-settings">Style Settings</a> plugin to configure the theme under Settings, Style Settings, JetBrains ThinkRail.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Option</th><th>Type</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Property lines</td>
+              <td>Dropdown</td>
+              <td>How the Properties block at the top of a note shows which value belongs to which name: hide lines (default), a solid or dotted line from each name to its value, or zebra striping across every other row.</td>
+            </tr>
+            <tr>
+              <td>Property line gap</td>
+              <td>Slider, 0 to 16px (default 2px)</td>
+              <td>Space on each side of the line. Applies to the solid and dotted options.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section id="fonts">
@@ -143,34 +193,24 @@
       <pre><code>brew install --cask font-jetbrains-mono
 brew install --cask font-geist</code></pre>
     </section>
-
-    <section id="options">
-      <h2>Options</h2>
-      <p>Install the <a href="https://github.com/mgmeyers/obsidian-style-settings">Style Settings</a> plugin to configure the theme under Settings, Style Settings, JetBrains ThinkRail.</p>
-      <ul>
-        <li><strong>Property lines</strong> is a dropdown for the Properties block at the top of a note: hide lines (default), a solid or dotted line from each name to its value, or zebra striping across every other row.</li>
-        <li><strong>Property line gap</strong> sets the space on each side of the line, from 0 to 16px.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Both color schemes</h2>
-      <figure class="shot">
-        <img src="img/dark.png" alt="Dark scheme">
-        <figcaption>Dark</figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="img/light.png" alt="Light scheme">
-        <figcaption>Light</figcaption>
-      </figure>
-    </section>
   </main>
 
   <footer>
     <div class="wrap">
       <p>Copyright 2026 Khai. Licensed under the <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/blob/main/LICENSE">Apache License 2.0</a>.</p>
       <p>Design, palette and styling derived from <a href="https://github.com/JetBrains/thinkrail">ThinkRail</a> by JetBrains s.r.o. (Apache License 2.0). See <a href="https://github.com/khaister/obsidian-jetbrains-thinkrail/blob/main/NOTICE">NOTICE</a>.</p>
+      <p>Unofficial. Not affiliated with or endorsed by JetBrains.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var box = document.getElementById("compare");
+      var input = box.querySelector("input");
+      function update() { box.style.setProperty("--pos", input.value + "%"); }
+      input.addEventListener("input", update);
+      update();
+    })();
+  </script>
 </body>
 </html>
