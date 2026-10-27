@@ -420,6 +420,10 @@ body {
 .workspace-ribbon.mod-right {
   border-color: var(--tr-border);
 }
+/* The line under the ribbon's top corner matches the sidebar dividers */
+.workspace-ribbon.mod-primary::before {
+  border-bottom: 1px solid var(--tr-border);
+}
 .workspace-tab-header-container,
 .workspace-tabs .workspace-tab-header-container {
   border-bottom: 1px solid var(--tr-border);
