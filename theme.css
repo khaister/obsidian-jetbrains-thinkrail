@@ -44,6 +44,18 @@ settings:
         max: 16
         step: 1
         format: px
+    -
+        id: tr-velocity-tables
+        title: Velocity-style tables
+        description: Full-width tables with muted headers, a strong header rule, vertical dividers and subtle alternating rows.
+        type: class-toggle
+        default: false
+    -
+        id: tr-velocity-lists
+        title: Velocity-style lists
+        description: Replace unordered list bullets with muted, rounded dashes in Reading view and Live Preview.
+        type: class-toggle
+        default: false
 */
 
 /* ---------- Tokens shared by both schemes ---------- */
@@ -685,6 +697,17 @@ body.tr-properties-zebra .metadata-properties {
 body.tr-properties-zebra .metadata-property:nth-child(even) {
   background-color: var(--tr-sunken);
 }
+/* Style Settings exposes each setting's ID on its row. */
+.setting-item:is([data-id="tr-velocity-tables"], [data-id="tr-velocity-lists"]) .setting-item-name::after {
+  content: "Experimental";
+  display: inline-block;
+  margin-inline-start: 1em;
+  color: var(--tr-muted);
+  font-variant-caps: all-small-caps;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
 /* Toggles */
 .checkbox-container {
   background-color: var(--tr-border-strong);
@@ -824,6 +847,77 @@ body.tr-properties-zebra .metadata-property:nth-child(even) {
   font-weight: 600;
   text-align: left;
 }
+
+/* Optional table and list appearances inspired by Velocity by Floodlight:
+   https://github.com/Gonzalo-D-Sales/obsidian-velocity
+   Independently implemented with ThinkRail colors. Each body class is opt-in. */
+body.tr-velocity-tables :is(.markdown-rendered, .markdown-source-view.is-live-preview) {
+  --table-background: transparent;
+  --table-header-background: transparent;
+  --table-header-background-hover: transparent;
+  --table-header-color: var(--tr-muted);
+  --table-header-weight: 500;
+  --table-text-size: 0.90625em;
+  --table-row-background-hover: transparent;
+  --table-row-alt-background: var(--tr-sunken);
+  --table-row-alt-background-hover: var(--tr-sunken);
+  --table-row-last-border-width: 0;
+  --table-column-first-border-width: 0;
+  --table-column-last-border-width: 0;
+}
+body.tr-velocity-tables :is(.markdown-rendered, .markdown-source-view.is-live-preview) table,
+body.tr-velocity-tables .markdown-source-view.is-live-preview .cm-table-widget .table-wrapper {
+  width: 100%;
+}
+body.tr-velocity-tables :is(.markdown-rendered, .markdown-source-view.is-live-preview) table :is(th, td) {
+  border: 0;
+  padding: 4px 12px;
+}
+body.tr-velocity-tables :is(.markdown-rendered, .markdown-source-view.is-live-preview) table th {
+  border-bottom: 2px solid var(--tr-border-strong);
+  color: var(--table-header-color);
+  font-weight: var(--table-header-weight);
+}
+body.tr-velocity-tables :is(.markdown-rendered, .markdown-source-view.is-live-preview) table td + td {
+  border-inline-start: 1px solid var(--tr-border);
+}
+/* Editable cells carry their padding on the inner wrapper. */
+body.tr-velocity-tables .markdown-source-view.is-live-preview .cm-table-widget :is(th, td) {
+  padding: 0;
+}
+body.tr-velocity-tables .markdown-source-view.is-live-preview .cm-table-widget .table-cell-wrapper {
+  padding: 4px 12px;
+}
+
+body.tr-velocity-lists :is(.markdown-rendered, .markdown-source-view.mod-cm6) {
+  --list-spacing: 0.125em;
+}
+body.tr-velocity-lists :is(.markdown-rendered, .markdown-source-view.mod-cm6) .list-bullet {
+  --list-bullet-size: 0.125rem;
+  --list-bullet-radius: 1rem;
+  --list-bullet-border: 0;
+  --list-bullet-transform: translateX(-0.125rem);
+  --list-marker-color: color-mix(in srgb, var(--tr-muted) 60%, transparent);
+  --list-marker-color-hover: var(--list-marker-color);
+  --list-marker-color-collapsed: var(--list-marker-color);
+  --background-modifier-hover: transparent;
+  --background-modifier-active-hover: transparent;
+}
+body.tr-velocity-lists :is(.markdown-rendered, .markdown-source-view.mod-cm6) .list-bullet::after {
+  width: 1rem;
+}
+/* Reading view places the parent bullet 0.8em before its text. Include the
+   dash's 0.125rem shift and half the guide width to align their centers. */
+body.tr-velocity-lists .markdown-rendered li:not(.task-list-item):has(> .list-bullet) > :is(ul, ol)::before {
+  inset-inline-start: calc(-0.8em - 0.125rem - var(--indentation-guide-width) / 2);
+}
+body.tr-velocity-lists .markdown-rendered li:not(.task-list-item):has(> .list-bullet) > :is(ul, ol):dir(rtl)::before {
+  inset-inline-start: calc(-0.8em + 0.125rem - var(--indentation-guide-width) / 2);
+}
+body.tr-velocity-lists .markdown-source-view.mod-cm6 .cm-formatting-list-ul {
+  margin-inline-end: 0.125rem;
+}
+
 .markdown-rendered mark,
 .cm-s-obsidian span.cm-highlight {
   border-radius: 2px;

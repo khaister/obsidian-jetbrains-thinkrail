@@ -117,6 +117,14 @@
     th, td { border: 1px solid var(--border-strong); padding: 4px 8px; text-align: left; vertical-align: top; }
     th { font-weight: 600; background: var(--surface); }
     td:first-child { font-weight: 500; white-space: nowrap; }
+    .experimental-label {
+      display: inline-block;
+      margin-inline-start: 1em;
+      color: var(--muted);
+      font-variant-caps: all-small-caps;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
 
     footer { margin-top: 56px; border-top: 1px solid var(--border); padding: 24px 0 48px; font-size: 13px; color: var(--muted); }
     footer p { margin: 4px 0; }
@@ -176,9 +184,20 @@
               <td>Slider, 0 to 16px (default 2px)</td>
               <td>Space on each side of the line. Applies to the solid and dotted options.</td>
             </tr>
+            <tr>
+              <td>Velocity-style tables<span class="experimental-label">Experimental</span></td>
+              <td>Toggle (off by default)</td>
+              <td>Full-width tables with muted headers, a strong header rule, vertical dividers and subtle alternating rows. Applies in Reading view and Live Preview.</td>
+            </tr>
+            <tr>
+              <td>Velocity-style lists<span class="experimental-label">Experimental</span></td>
+              <td>Toggle (off by default)</td>
+              <td>Muted, rounded dashes for unordered list bullets in Reading view and Live Preview.</td>
+            </tr>
           </tbody>
         </table>
       </div>
+      <p>The optional table and list styles are inspired by <a href="https://github.com/Gonzalo-D-Sales/obsidian-velocity">Velocity by Floodlight</a>, implemented with ThinkRail's colors. Enable either style independently.</p>
     </section>
 
     <section id="fonts">

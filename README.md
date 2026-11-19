@@ -18,6 +18,10 @@ Install [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) pl
 | --- | --- | --- |
 | Property lines | Dropdown | How the Properties block at the top of a note shows which value belongs to which name: hide lines (default), a solid or dotted line from each name to its value, or zebra striping across every other row. |
 | Property line gap | Slider, 0 to 16px (default 2px) | Space on each side of the line. Applies to the solid and dotted options. |
+| Velocity-style tables | Experimental toggle (off by default) | Full-width tables with muted headers, a strong header rule, vertical dividers and subtle alternating rows. Applies in Reading view and Live Preview. |
+| Velocity-style lists | Experimental toggle (off by default) | Muted, rounded dashes for unordered list bullets in Reading view and Live Preview. |
+
+The optional table and list styles are inspired by [Velocity by Floodlight](https://github.com/Gonzalo-D-Sales/obsidian-velocity), implemented with ThinkRail's colors. Enable either style independently.
 
 ## Fonts
 
