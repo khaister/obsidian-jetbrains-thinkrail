@@ -10,6 +10,18 @@ An Obsidian theme that follows the design of [ThinkRail](https://github.com/JetB
 
 Install from the Obsidian community directory: [JetBrains ThinkRail](https://community.obsidian.md/themes/jetbrains-thinkrail).
 
+## Releasing
+
+Run `make release` from a clean `main` branch. The helper selects the next date-based version (`YYYY.MMDD.N`, starting at 1 each day), updates and commits `manifest.json`, creates an annotated tag without a `v` prefix, pushes `main` and the tag together, and publishes a GitHub release with the tagged `manifest.json` and `theme.css` attached. Leading zeroes in the month/day component are removed. Requires Git, Python 3 and an authenticated [GitHub CLI](https://cli.github.com/).
+
+```sh
+make release-dry-run
+make release
+make release ARGS="--version 2026.1118.1"
+```
+
+`--dry-run` uses local tags and does not change files or publish anything. Use `ARGS="--no-release"` to push without publishing, or `ARGS="--release-only 2026.1118.1"` to publish an existing tag using its original files. Run `./scripts/release.sh --help` for all options.
+
 ## Style Settings
 
 Install [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin to configure the theme under Settings > Style Settings > JetBrains ThinkRail.
