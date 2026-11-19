@@ -1,0 +1,87 @@
+<div id="thinkrail-toggle-preview" class="viz-dotted-background">
+  <style>
+    #thinkrail-toggle-preview { padding: 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    #thinkrail-toggle-preview .tr-sample { --tr-bg: #fff; --tr-surface: #f4f4f5; --tr-text: #27272a; --tr-muted: #52525b; --tr-border: #e4e4e7; --tr-off: #d4d4d8; --tr-old-thumb: #000; --tr-on-track: #dcebd5; --tr-on-thumb: #2a7314; background: var(--tr-bg); color: var(--tr-text); border: 1px solid var(--tr-border); border-radius: 8px; padding: 20px; min-width: 0; }
+    #thinkrail-toggle-preview .tr-dark { --tr-bg: #09090b; --tr-surface: #18181b; --tr-text: #f4f4f5; --tr-muted: #babac1; --tr-border: #27272a; --tr-off: #3f3f46; --tr-old-thumb: #0a0a0a; --tr-on-track: #263b22; --tr-on-thumb: #8dff4f; color-scheme: dark; }
+    #thinkrail-toggle-preview .tr-title { font-size: 16px; line-height: 1.4; font-weight: 500; margin: 0 0 24px; }
+    #thinkrail-toggle-preview .tr-label { color: var(--tr-muted); font-size: 12px; line-height: 1.5; margin-bottom: 8px; }
+    #thinkrail-toggle-preview .tr-settings { background: var(--tr-surface); padding: 0 16px; border-radius: 6px; }
+    #thinkrail-toggle-preview .tr-setting { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 62px; font-size: 14px; line-height: 1.4; }
+    #thinkrail-toggle-preview .tr-setting + .tr-setting { border-top: 1px solid var(--tr-border); }
+    #thinkrail-toggle-preview .tr-group + .tr-group { margin-top: 24px; }
+    #thinkrail-toggle-preview .tr-switch { position: relative; flex: 0 0 44px; width: 44px; height: 20px; padding: 0; border: 0; border-radius: 20px; background: var(--tr-off); appearance: none; }
+    #thinkrail-toggle-preview .tr-switch::after { content: ""; position: absolute; width: 26px; height: 16px; left: 2px; top: 2px; border-radius: 16px; background: #fff; box-shadow: 0 1px 3px #0002; }
+    #thinkrail-toggle-preview .tr-switch[aria-checked="true"] { background: var(--tr-on-track); }
+    #thinkrail-toggle-preview .tr-switch[aria-checked="true"]::after { left: 16px; background: var(--tr-on-thumb); box-shadow: none; }
+    #thinkrail-toggle-preview .tr-current[aria-checked="true"] { background: #8dff4f; }
+    #thinkrail-toggle-preview .tr-current[aria-checked="true"]::after { background: var(--tr-old-thumb); }
+    #thinkrail-toggle-preview .tr-sample { --tr-on-border: #92ad83; --tr-off-border: #a1a1aa; }
+    #thinkrail-toggle-preview .tr-dark { --tr-on-border: #4d6745; --tr-off-border: #62626d; }
+    #thinkrail-toggle-preview .tr-group[id] .tr-switch { box-shadow: inset 0 0 0 1px var(--tr-off-border); }
+    #thinkrail-toggle-preview .tr-group[id] .tr-switch[aria-checked="true"] { box-shadow: inset 0 0 0 1px var(--tr-on-border); }
+    @media (max-width: 560px) { #thinkrail-toggle-preview { grid-template-columns: minmax(0, 1fr); padding: 12px; gap: 16px; } }
+    @media (pointer: coarse) { #thinkrail-toggle-preview .tr-switch::before { content: ""; position: absolute; inset: -12px 0; } }
+  </style>
+  <section class="tr-sample" aria-label="Light mode toggles">
+    <h2 class="tr-title">Light mode</h2>
+    <div class="tr-group">
+      <div class="tr-label">Current</div>
+      <div class="tr-settings">
+        <div class="tr-setting"><span>Readable line length</span><button class="tr-switch tr-current cursor-interaction" type="button" role="switch" aria-checked="true" aria-label="Current light mode: readable line length"></button></div>
+      </div>
+    </div>
+    <div class="tr-group" id="tr-light-proposal" aria-label="Proposed light colors">
+      <div class="tr-label">Proposed</div>
+      <div class="tr-settings">
+        <div class="tr-setting"><span>Readable line length</span><button class="tr-switch cursor-interaction" type="button" role="switch" aria-checked="true" aria-label="Proposed light mode: readable line length"></button></div>
+        <div class="tr-setting"><span>Inline title</span><button class="tr-switch cursor-interaction" type="button" role="switch" aria-checked="false" aria-label="Proposed light mode: inline title"></button></div>
+      </div>
+    </div>
+  </section>
+  <section class="tr-sample tr-dark" aria-label="Dark mode toggles">
+    <h2 class="tr-title">Dark mode</h2>
+    <div class="tr-group">
+      <div class="tr-label">Current</div>
+      <div class="tr-settings">
+        <div class="tr-setting"><span>Readable line length</span><button class="tr-switch tr-current cursor-interaction" type="button" role="switch" aria-checked="true" aria-label="Current dark mode: readable line length"></button></div>
+      </div>
+    </div>
+    <div class="tr-group" id="tr-dark-proposal" aria-label="Proposed dark colors">
+      <div class="tr-label">Proposed</div>
+      <div class="tr-settings">
+        <div class="tr-setting"><span>Readable line length</span><button class="tr-switch cursor-interaction" type="button" role="switch" aria-checked="true" aria-label="Proposed dark mode: readable line length"></button></div>
+        <div class="tr-setting"><span>Inline title</span><button class="tr-switch cursor-interaction" type="button" role="switch" aria-checked="false" aria-label="Proposed dark mode: inline title"></button></div>
+      </div>
+    </div>
+  </section>
+  <script>
+    (() => {
+      const root = document.getElementById("thinkrail-toggle-preview");
+      const switches = [...root.querySelectorAll('[role="switch"]')];
+      function restore(saved) {
+        if (!Array.isArray(saved?.privateContent?.checked)) return;
+        switches.forEach((button, index) => {
+          const checked = saved.privateContent.checked[index];
+          if (typeof checked === "boolean") button.setAttribute("aria-checked", String(checked));
+        });
+      }
+      restore(window.openai?.widgetState);
+      window.addEventListener("openai:set_globals", event => restore(event.detail?.globals?.widgetState));
+      switches.forEach(button => button.addEventListener("click", () => {
+        button.setAttribute("aria-checked", String(button.getAttribute("aria-checked") !== "true"));
+        if (window.openai?.setWidgetState) window.openai.setWidgetState({ privateContent: { checked: switches.map(item => item.getAttribute("aria-checked") === "true") } }).catch(() => {});
+      }));
+      if (globalThis.Tweak) {
+        for (const [id, colors] of [["tr-light-proposal", { track: "#dcebd5", thumb: "#2a7314", border: "#92ad83" }], ["tr-dark-proposal", { track: "#263b22", thumb: "#8dff4f", border: "#4d6745" }]]) {
+          const group = document.getElementById(id);
+          const render = () => { group.style.setProperty("--tr-on-track", colors.track); group.style.setProperty("--tr-on-thumb", colors.thumb); group.style.setProperty("--tr-on-border", colors.border); };
+          render();
+          const tweak = new Tweak({ container: group, onChange: render });
+          tweak.addColorPicker(colors, "track", { label: "Enabled track", reference: "--tr-on-track" });
+          tweak.addColorPicker(colors, "thumb", { label: "Enabled thumb", reference: "--tr-on-thumb" });
+          tweak.addColorPicker(colors, "border", { label: "Enabled border", reference: "--tr-on-border" });
+        }
+      }
+    })();
+  </script>
+</div>

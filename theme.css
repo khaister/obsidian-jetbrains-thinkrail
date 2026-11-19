@@ -156,6 +156,9 @@ body {
   --tr-accent-hover: #59d915;
   --tr-accent-solid: #8dff4f;
   --tr-on-accent: #0a0a0a;
+  --tr-toggle-on-track: #263b22;
+  --tr-toggle-on-border: #4d6745;
+  --tr-toggle-off-border: #62626d;
   --tr-info: #6ac8ff;
   --tr-success: #41cb66;
   --tr-danger: #ff4b75;
@@ -199,6 +202,9 @@ body {
   --tr-accent-hover: #59d915;
   --tr-accent-solid: #8dff4f;
   --tr-on-accent: #000000;
+  --tr-toggle-on-track: #dcebd5;
+  --tr-toggle-on-border: #92ad83;
+  --tr-toggle-off-border: #a1a1aa;
   --tr-info: #2265cf;
   --tr-success: #167230;
   --tr-danger: #d02533;
@@ -708,15 +714,18 @@ body.tr-properties-zebra .metadata-property:nth-child(even) {
   letter-spacing: 0.05em;
 }
 
-/* Toggles */
+/* Toggles: muted tracks, accent thumbs and a 1px inset border. */
 .checkbox-container {
   background-color: var(--tr-border-strong);
+  box-shadow: inset 0 0 0 1px var(--tr-toggle-off-border);
 }
 .checkbox-container.is-enabled {
-  background-color: var(--tr-accent-solid);
+  background-color: var(--tr-toggle-on-track);
+  box-shadow: inset 0 0 0 1px var(--tr-toggle-on-border);
 }
-.checkbox-container.is-enabled:after {
-  background-color: var(--tr-on-accent);
+.checkbox-container.is-enabled::after {
+  background-color: var(--tr-accent);
+  box-shadow: none;
 }
 
 /* ---------- Menus, popovers, modals: flat elevated surfaces ---------- */
