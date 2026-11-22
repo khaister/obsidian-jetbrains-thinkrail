@@ -1,7 +1,6 @@
 #!/bin/sh
 set -eu
 
-# Adapted from the release helpers in fullstackweekly.github.io and khai.pages.dev.
 # Obsidian requires three numeric version components, no v prefix, and release
 # attachments that match the tagged manifest and stylesheet.
 
